@@ -11,6 +11,16 @@
 |
 */
 
+use Webklex\IMAP\Client;
+
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
+});
+
+Route::get('/email-checker', function () {
+	try {
+		\App\EmailAccount::emailChecker();
+	}catch (Exception $exception) {
+		echo $exception->getMessage();
+	}
 });
